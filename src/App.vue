@@ -6,10 +6,11 @@
 
 <script>
 import RyLogin from "./pages/ry-login"
+import RyIndex from '@/pages/ry-index'
 export default {
   name: 'App',
   components:{
-    RyLogin
+    RyLogin,RyIndex
   }
 }
 </script>

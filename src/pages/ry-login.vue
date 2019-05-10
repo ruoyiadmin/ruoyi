@@ -11,7 +11,7 @@
                       <h1 class="welcome">欢迎使用 若依 后台管理系统</h1>
                       <ul class="lists">
                         <li class="item" :key="key" v-for="(item,key) in lists">
-                          <span class="iconfont"></span>
+                          <i class="layui-icon layui-icon-download-circle"></i> 
                           {{item.title}}  
                         </li>
                       </ul>
@@ -38,7 +38,7 @@
                             <input type="checkbox" id="remember"> 
                             <label class="rem_tit"  for="remember">记住我</label>
                           </div>
-                          <button class="btn">登录</button>
+                          <button class="btn" @click="login">登录</button>
                       </form>
                   </div>
               </div>
@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import {loginf} from '../api/login.js'
 export default {
     name: "RyLogin",
     data(){
@@ -62,6 +63,17 @@ export default {
             {title:"Thymeleaf"},
             {title:"Layui"}
           ]
+      }
+    },
+    methods:{
+      //登录
+      login:async function(){
+            let isRinght = await loginf()
+            if( isRinght == 1){
+              this.$router.push({name:"ry-index"})
+            }else{
+              alert("密码或用户名错误")
+            }
       }
     },
     mounted(){
